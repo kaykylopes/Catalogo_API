@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Catalogo_API</name>
+    </assembly>
+    <members>
+        <member name="M:Catalogo_API.Controllers.AutorizaController.RegisterUser(Catalogo_API.DTOs.UsuarioDTO)">
+            <summary>
+            Registra um novo usuário
+            </summary>
+            <param name="model">Um objeto UsuarioDTO</param>
+            <returns>Status 200 e o token para o cliente</returns>
+            <remarks>retorna o Status 200 e o token para  novo cliente</remarks>
+        </member>
+        <member name="M:Catalogo_API.Controllers.AutorizaController.Login(Catalogo_API.DTOs.UsuarioDTO)">
+            <summary>
+            Verifica as credenciais de um usuário
+            </summary>
+            <param name="userInfo">Um objeot do tipo UsuarioDTO</param>
+            <returns>Status 200 e o token para o cliente</returns>
+        </member>
+        <member name="M:Catalogo_API.Controllers.CategoriaController.#ctor(Catalogo_API.Repository.IUnitOfWork,AutoMapper.IMapper)">
+            <summary>
+            Construtor do controlador CategoriasController
+            </summary>
+            <param name="contexto"></param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:Catalogo_API.Controllers.CategoriaController.Get">
+            <summary>
+            Retorna uma coleção de objetos Categoria
+            </summary>
+            <returns>Lista de Categorias</returns>
+        </member>
+        <member name="M:Catalogo_API.Controllers.CategoriaController.GetCategoriaProdutos">
+            <summary>
+            Obtém os produtos relacionados para cada categoria
+            </summary>
+            <returns>Objetos Categoria e respectivo Objetos Produtos</returns>
+        </member>
+        <member name="M:Catalogo_API.Controllers.CategoriaController.Get(System.Int32)">
+            <summary>
+            Obtem uma Categoria pelo seu Id
+            </summary>
+            <param name="id"></param>
+            <returns>Objetos Categoria</returns>
+        </member>
+        <member name="M:Catalogo_API.Controllers.CategoriaController.Post(ApiCatalogo.DTOs.CategoriaDTO)">
+             <summary>
+             Inclui uma nova categoria
+             </summary>
+             <remarks>
+             Exemplo de request:
+            
+                 POST api/categorias
+                 {
+                    "categoriaId": 1,
+                    "nome": "categoria1",
+                    "imagemUrl": "http://teste.net/1.jpg"
+                 }
+             </remarks>
+             <param name="categoriaDto">objeto Categoria</param>
+             <returns>O objeto Categoria incluida</returns>
+             <remarks>Retorna um objeto Categoria incluído</remarks>
+        </member>
+        <member name="M:Catalogo_API.Controllers.CategoriaController.Put(System.Int32,ApiCatalogo.DTOs.CategoriaDTO)">
+            <summary>
+            Altera uma Categoria 
+            </summary>
+            <param name="id"></param>
+            <param name="categoriaDto"></param>
+            <returns>retorna 400 ou 200</returns>
+        </member>
+        <member name="M:Catalogo_API.Controllers.CategoriaController.Delete(System.Nullable{System.Int32})">
+            <summary>
+            Deleta uma Categoria
+            </summary>
+            <param name="id">codigo da categoria (int) </param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

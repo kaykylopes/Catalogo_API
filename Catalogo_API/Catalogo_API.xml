@@ -71,7 +71,7 @@
             <param name="categoriaDto"></param>
             <returns>retorna 400 ou 200</returns>
         </member>
-        <member name="M:Catalogo_API.Controllers.CategoriaController.Delete(System.Nullable{System.Int32})">
+        <member name="M:Catalogo_API.Controllers.CategoriaController.Delete(System.Int32)">
             <summary>
             Deleta uma Categoria
             </summary>

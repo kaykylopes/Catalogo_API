@@ -2,16 +2,19 @@
 using AutoMapper;
 using Catalogo_API.Models;
 using Catalogo_API.Repository;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 
 namespace Catalogo_API.Controllers
 {
     [Produces("application/json")]
-   // [Authorize(AuthenticationSchemes = "Bearer")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("api/[controller]")]
     [ApiController]
     public class CategoriaController : ControllerBase
@@ -39,6 +42,13 @@ namespace Catalogo_API.Controllers
         {
             _uof = uof;
             _mapper = mapper;
+        }
+
+        [AllowAnonymous]
+        [HttpGet("teste")]
+        public string GetTeste()
+        {
+            return $"CategoriaController - {DateTime.Now.ToLongDateString().ToString()}";
         }
 
         //[HttpGet("autor")]
@@ -162,7 +172,7 @@ namespace Catalogo_API.Controllers
         /// <param name="id">codigo da categoria (int) </param>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        public ActionResult<CategoriaDTO> Delete(int? id)
+        public ActionResult<CategoriaDTO> Delete(int id)
         {
             var categoria = _uof.CategoriaRepository.GetById(c => c.CategoriaId == id);
             if (categoria == null)

@@ -39,7 +39,14 @@ namespace Catalogo_API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors();
+            //services addCors()
+            services.AddCors(options =>
+            {
+                options.AddPolicy("EnableCORS", builder =>
+                {
+                    builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().Build();
+                });
+            });
 
             var mappingConfig = new MapperConfiguration(mc =>
            {
@@ -150,7 +157,7 @@ namespace Catalogo_API
             //adiciona o middleware que habilita a autorização
             app.UseAuthorization();
 
-            app.UseCors(opt => opt.AllowAnyOrigin());
+            app.UseCors("EnableCORS");
 
             //Habilira o middleware para servir o Swagger 
             //gerado como um endpoint  JSON       

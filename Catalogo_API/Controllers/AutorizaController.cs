@@ -17,7 +17,7 @@ using Microsoft.IdentityModel.Tokens;
 namespace Catalogo_API.Controllers
 {
     [Produces("application/json")]
-    [Route("api/[controller]")]
+    [Route("api/[Controller]")]
     [ApiController]
     public class AutorizaController : ControllerBase
     {
